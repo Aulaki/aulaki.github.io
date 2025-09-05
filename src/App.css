@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+--color-light-bg: oklch(0.975 0.015 95.5);
+--color-light-text: oklch(0.22 0.05 30);
+--color-light-heading: oklch(0.45 0.09 75);
+--color-light-primary: oklch(0.78 0.12 85);
+--color-light-hover: oklch(0.72 0.11 80);
+--color-light-border: oklch(0.88 0.04 95);
+
+--color-dark-bg: oklch(0.12 0.01 40);
+--color-dark-text: oklch(0.78 0.12 85);
+--color-dark-heading: oklch(0.92 0.04 95);
+--color-dark-primary: oklch(0.45 0.09 75);
+--color-dark-hover: oklch(0.55 0.08 80);
+--color-dark-border: oklch(0.22 0.01 30);
+
+}
+
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
